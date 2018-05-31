@@ -4,13 +4,11 @@ case class Chance(numerator: Int, denominator: Int) {
   def *(otherChance: Chance) = Chance(numerator * otherChance.numerator, denominator * otherChance.denominator)
 
   def +(otherChance: Chance) = {
-    if (denominator == otherChance.denominator) Chance(numerator + otherChance.numerator, denominator)
-    else Chance(numerator * otherChance.denominator + otherChance.numerator * denominator, denominator * otherChance.denominator)
+    Chance(numerator * otherChance.denominator + otherChance.numerator * denominator, denominator * otherChance.denominator)
   }
 
   def -(otherChance: Chance) = {
-    if (denominator == otherChance.denominator) Chance(numerator - otherChance.numerator, denominator)
-    else Chance(numerator * otherChance.denominator - otherChance.numerator * denominator, denominator * otherChance.denominator)
+    Chance(numerator * otherChance.denominator - otherChance.numerator * denominator, denominator * otherChance.denominator)
   }
 
   def ===(otherChance: Chance) = {
@@ -19,7 +17,6 @@ case class Chance(numerator: Int, denominator: Int) {
 }
 
 class Experiment(space: List[Int]) {
-
 
   val spaceSize: Int = space.size
 
