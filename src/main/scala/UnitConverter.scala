@@ -23,8 +23,11 @@ case class Measure[T](private val value: Double, private val unit: Unit[T]) {
 
   override def equals(obj: scala.Any): Boolean = {
     obj match {
-      case otherLength: Measure[T] => unit.tag == otherLength.unit.tag && otherLength.valueInBaseUnit == valueInBaseUnit
+      case otherLength: Measure[T] =>
+        unit.tag == otherLength.unit.tag && otherLength.valueInBaseUnit == valueInBaseUnit
       case _ => false
     }
   }
 }
+
+//TODO: compare 212F = 100C

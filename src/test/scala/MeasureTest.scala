@@ -11,7 +11,6 @@ class MeasureTest extends FunSpec {
       assert(Measure(1, Inch) == Measure(0.0254, Meter))
     }
   }
-
   describe("compare volume unit") {
 
     it("should compare gallon and liter") {
@@ -30,7 +29,7 @@ class MeasureTest extends FunSpec {
     }
 
     it("should return 3 inch when sum 2in and 2.5cm") {
-      assert(Measure(2, Inch).add(Measure(2.54, Centimeter)) == Measure(3, Inch))
+      assert(Measure(1, Inch).add(Measure(1, Centimeter)) == Measure(1.393701, Inch))
     }
   }
 
