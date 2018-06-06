@@ -1,4 +1,6 @@
-abstract class Unit[T](val conversionFactorFromBaseUnit: Double)
+import scala.reflect.ClassTag
+
+abstract class Unit[T](val conversionFactorFromBaseUnit: Double)(implicit val tag: ClassTag[T])
 
 trait LengthUnit
 object Meter extends Unit[LengthUnit](1)
@@ -11,7 +13,7 @@ object Gallon extends Unit[VolumeUnit](3.78)
 
 case class Measure[T](private val value: Double, private val unit: Unit[T]) {
 
-  def add(otherMeasure: Measure[T]) = {
+  def add(otherMeasure: Measure[T]): Measure[T] = {
     Measure(otherMeasure.valueInBaseUnit / unit.conversionFactorFromBaseUnit + value, unit)
   }
 
@@ -21,9 +23,8 @@ case class Measure[T](private val value: Double, private val unit: Unit[T]) {
 
   override def equals(obj: scala.Any): Boolean = {
     obj match {
-      case otherLength: Measure[T] => otherLength.valueInBaseUnit == valueInBaseUnit
+      case otherLength: Measure[T] => unit.tag == otherLength.unit.tag && otherLength.valueInBaseUnit == valueInBaseUnit
       case _ => false
     }
   }
-
 }

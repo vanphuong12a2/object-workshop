@@ -19,14 +19,6 @@ class RectangleTest extends FunSpec {
         }
       assert(caught.getMessage == "Size needs to be a positive number")
     }
-
-//    it("should throw exception when width is -too big") {
-//      val caught =
-//        intercept[IllegalArgumentException] {
-//          new Rectangle(Int.MaxValue, 1)
-//        }
-//      assert(caught.getMessage == "Size needs to be a positive number")
-//    }
   }
   describe("should calculate area for positive numbers") {
     val rectangles = Table(
