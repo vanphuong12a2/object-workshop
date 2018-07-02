@@ -1,13 +1,12 @@
 class ParkingLot {
-  private var cars: List[Car] = List()
+  private var car: Option[Car] = None
 
-  def retrieve(myCar: Car): Boolean = cars.contains(myCar)
+  def retrieve(myCar: Car): Boolean = car.contains(myCar)
 
-  def park(aCar: Car) = {
-    cars = aCar :: cars
+  def park(aCar: Car): Boolean = {
+    car = Some(aCar)
     true
   }
-
 }
 
-case class Car(plateNumber: Int)
+class Car

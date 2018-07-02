@@ -4,13 +4,13 @@ class ParkingLotTest extends FunSpec {
 
   describe("parking lot") {
     it("should be able to park a car") {
-      val aCar = Car(1)
+      val aCar = new Car
       val parkingLot = new ParkingLot()
       assert(parkingLot.park(aCar))
     }
 
     it("should be able to retrieve my car") {
-      val myCar = Car(1)
+      val myCar = new Car
       val parkingLot = new ParkingLot()
       parkingLot.park(myCar)
 
@@ -18,7 +18,7 @@ class ParkingLotTest extends FunSpec {
     }
 
     it("should not retrieve a car that not in parking lot") {
-      val myCar = Car(1)
+      val myCar = new Car
       val parkingLot = new ParkingLot()
       assert(!parkingLot.retrieve(myCar))
     }
